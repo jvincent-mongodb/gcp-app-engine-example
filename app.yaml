@@ -1,0 +1,4 @@
+runtime: python310
+entrypoint: uvicorn main:app --host 0.0.0.0 --port 8080
+vpc_access_connector:
+  name: projects/fundamental-run-428322-r1/locations/us-central1/connectors/mongo-connector
