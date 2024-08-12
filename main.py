@@ -1,7 +1,7 @@
 import os
 import certifi
 import json
-from fastapi import FastAPI, Form
+from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
 from pymongo import MongoClient
 from typing import Annotated
@@ -23,14 +23,9 @@ collection = db.comments
 async def index():
     return HTMLResponse(content=index_view, status_code=200)
     
-@app.get("/list-docs")
+@app.get("/get-doc")
 async def index():
     r = collection.find_one({"name":"Mercedes Tyler"})
     data = {'name': r['name'], 'text':r['text']}
 
     return json.dump(data)
-
-@app.post("/insert-doc")
-def insert_doc(document: Annotated[str, Form()]):
-    r = collection.insert_one(document)
-    return f'doc inserted {r}'
