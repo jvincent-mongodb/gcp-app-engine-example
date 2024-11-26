@@ -10,10 +10,7 @@ from index import index_view
 
 app = FastAPI()
 
-password = os.environ.get('MONGO_PASSWORD')
-username = os.environ.get('MONGO_USERNAME')
-
-mongo_uri = f'mongodb+srv://{username}:{password}@cluster1-pri.ncz2p.mongodb-dev.net/?retryWrites=true&w=majority&appName=Cluster1'
+mongo_uri = <add Atlas connection string here>
 
 client = MongoClient(mongo_uri, tlsCAFile=certifi.where())
 db = client.sample_mflix
